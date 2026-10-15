@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Send, Building2, Mail, User, MapPin, Loader2, AlertCircle } from 'lucide-react';
+import { CheckCircle2, Send, Building2, Mail, User, MapPin, Loader2, AlertCircle, Phone, ExternalLink, X } from 'lucide-react';
 
 export default function ContactPage({ onBookDemo }) {
   const [formData, setFormData] = useState({
@@ -16,6 +16,7 @@ export default function ContactPage({ onBookDemo }) {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showMap, setShowMap] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -318,7 +319,104 @@ export default function ContactPage({ onBookDemo }) {
         </div>
       </div>
 
-      {/* 3. AAYAM Tagline Banner */}
+      {/* 3. Direct Contact & Office Details (Phone, Email, Location) */}
+      <div className="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          
+          {/* Card 1: Phone */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-lg hover:shadow-xl hover:border-orange-300 transition-all text-center flex flex-col items-center group">
+            <div className="w-12 h-12 rounded-xl bg-orange-50 text-[#F15A24] flex items-center justify-center mb-3 group-hover:bg-[#F15A24] group-hover:text-white transition-colors">
+              <Phone className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-slate-900 font-heading">Call Us</h3>
+            <p className="text-xs text-slate-500 mt-1">Mon - Sat, 9:30 AM to 6:30 PM</p>
+            <a
+              href="tel:9876543210"
+              className="mt-3 text-sm font-bold text-[#F15A24] hover:underline flex items-center gap-1.5"
+            >
+              <span>+91 9876543210</span>
+            </a>
+          </div>
+
+          {/* Card 2: Email */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-lg hover:shadow-xl hover:border-orange-300 transition-all text-center flex flex-col items-center group">
+            <div className="w-12 h-12 rounded-xl bg-orange-50 text-[#F15A24] flex items-center justify-center mb-3 group-hover:bg-[#F15A24] group-hover:text-white transition-colors">
+              <Mail className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-slate-900 font-heading">Email Us</h3>
+            <p className="text-xs text-slate-500 mt-1">We respond within 24 hours</p>
+            <a
+              href="mailto:admin@gmail.com"
+              className="mt-3 text-sm font-bold text-[#F15A24] hover:underline flex items-center gap-1.5"
+            >
+              <span>admin@gmail.com</span>
+            </a>
+          </div>
+
+          {/* Card 3: Location with "View Location" Button */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-lg hover:shadow-xl hover:border-orange-300 transition-all text-center flex flex-col items-center group">
+            <div className="w-12 h-12 rounded-xl bg-orange-50 text-[#F15A24] flex items-center justify-center mb-3 group-hover:bg-[#F15A24] group-hover:text-white transition-colors">
+              <MapPin className="w-5 h-5" />
+            </div>
+            <h3 className="text-base font-bold text-slate-900 font-heading">Our Location</h3>
+            <p className="text-sm font-bold text-slate-800 mt-1">Pune, Maharashtra</p>
+            
+            {/* View Location Button */}
+            <button
+              onClick={() => setShowMap(!showMap)}
+              className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#F15A24] hover:bg-[#d94916] text-white text-xs font-semibold shadow-md shadow-orange-600/20 transition-all transform hover:-translate-y-0.5 cursor-pointer"
+            >
+              <MapPin className="w-3.5 h-3.5" />
+              <span>{showMap ? 'Hide Location' : 'View Location'}</span>
+            </button>
+          </div>
+
+        </div>
+
+        {/* Expandable Interactive Map (Shown when "View Location" is clicked) */}
+        {showMap && (
+          <div className="mt-8 bg-white rounded-2xl border border-slate-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+            <div className="bg-slate-900 text-white px-5 sm:px-6 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-2.5 text-sm font-bold">
+                <MapPin className="w-4 h-4 text-[#F15A24]" />
+                <span>Office Location — Pune, Maharashtra</span>
+              </div>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Pune,+Maharashtra"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-orange-400 hover:text-orange-300 font-semibold inline-flex items-center gap-1 hover:underline"
+                >
+                  <span>Open in Google Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <button
+                  onClick={() => setShowMap(false)}
+                  className="w-7 h-7 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+                  aria-label="Close Map"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+            <div className="w-full h-80 sm:h-96 relative bg-slate-100">
+              <iframe
+                title="Office Location Map - Pune, Maharashtra"
+                src="https://maps.google.com/maps?q=Pune,%20Maharashtra&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* 4. AAYAM Tagline Banner */}
       <div className="py-12 text-center border-t border-slate-200/80 bg-white">
         <p className="text-lg sm:text-xl font-extrabold text-slate-900 font-heading tracking-wide">
           AAYAM — Every Dimension. Connected.

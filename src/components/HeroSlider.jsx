@@ -39,7 +39,7 @@ export default function HeroSlider({ onBookDemo }) {
     if (!isPlaying) return;
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5500);
+    }, 3500);
     return () => clearInterval(interval);
   }, [isPlaying, slides.length]);
 
