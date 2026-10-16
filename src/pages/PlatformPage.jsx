@@ -121,7 +121,7 @@ export default function PlatformPage({ onBookDemo }) {
   ];
 
   return (
-    <div className="bg-white w-full max-w-full overflow-x-hidden">
+    <div className="bg-white">
       {/* 1. Hero Section */}
       <section className="relative w-full min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] overflow-hidden bg-slate-950 pt-28 sm:pt-36 pb-16 flex items-center">
         <img

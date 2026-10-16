@@ -19,7 +19,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [signInModalOpen, setSignInModalOpen] = useState(false);
@@ -90,12 +90,16 @@ export default function App() {
     };
   }, [currentPage]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#F15A24] selection:text-white w-full max-w-full overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#F15A24] selection:text-white w-full">
       {/* Animated Logo Splash Screen on Initial Load */}
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
 
@@ -108,7 +112,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-grow w-full max-w-full overflow-x-hidden">
+      <main className="flex-grow w-full">
         {currentPage === 'contact' && (
           <ContactPage onBookDemo={() => setDemoModalOpen(true)} />
         )}
