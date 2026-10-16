@@ -23,7 +23,7 @@ export default function Footer({ onNavigateHome, onNavigateAbout, onOpenContact,
             <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
               Comprehensive Real Estate & Construction Workflow Suite. Connect people, approvals, progress and commitments—from blueprint to final handover.
             </p>
-            <div>
+            {/* <div>
               <a
                 href="https://aayam.msquaresoftware.com"
                 target="_blank"
@@ -33,7 +33,7 @@ export default function Footer({ onNavigateHome, onNavigateAbout, onOpenContact,
                 <span>aayam.msquaresoftware.com</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Col 2: Quick Links (3 cols) */}
