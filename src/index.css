@@ -90,8 +90,47 @@
 }
 
 /* Glass & Border Utilities */
-.hover-border-orange:hover {
+.hover-border-orange:hover,
+.hover-border-orange:active {
   border-color: #F15A24;
+}
+
+/* ========================================================
+   Mobile Touch Interaction: Show Hover Color ONLY on Touch / Tap (Not Continuous)
+   ======================================================== */
+.aayam-card:active,
+.card-hover-orange:active,
+.card-hover-subtle:active,
+[class*="hover:border-[#F15A24]"]:active,
+[class*="hover:border-orange-"]:active {
+  border-color: #F15A24 !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFF5EE 100%) !important;
+  transform: scale(0.985);
+  box-shadow: 0 8px 24px -4px rgba(241, 90, 36, 0.22) !important;
+  transition: transform 0.15s ease-out, border-color 0.15s ease-out, background 0.15s ease-out !important;
+}
+
+[class*="hover:border-[#F15A24]"]:active h3,
+[class*="hover:border-[#F15A24]"]:active [class*="group-hover:text-[#F15A24]"],
+.aayam-card:active h3 {
+  color: #F15A24 !important;
+}
+
+[class*="hover:border-[#F15A24]"]:active [class*="group-hover:bg-[#F15A24]"],
+[class*="hover:border-[#F15A24]"]:active [class*="bg-orange-50"] {
+  background-color: #F15A24 !important;
+  color: #FFFFFF !important;
+}
+
+[class*="hover:border-[#F15A24]"]:active [class*="group-hover:bg-[#F15A24]"] svg,
+[class*="hover:border-[#F15A24]"]:active [class*="bg-orange-50"] svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+[class*="hover:border-[#F15A24]"]:active [class*="group-hover:bg-orange-50"] {
+  background-color: rgba(255, 245, 240, 0.95) !important;
+  border-color: rgba(241, 90, 36, 0.3) !important;
 }
 
 /* Touch Friendly Responsive Utilities */
