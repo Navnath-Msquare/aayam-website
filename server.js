@@ -19,7 +19,7 @@ app.use(express.json());
 // API route to handle contact form submission
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, email, organization, role, enquiryType, location, message } = req.body;
+    const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
       return res.status(400).json({

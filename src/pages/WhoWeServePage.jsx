@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Building2, 
   GitFork, 
   Users2, 
   HardHat, 

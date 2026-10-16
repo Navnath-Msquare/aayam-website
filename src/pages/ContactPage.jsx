@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Send, Building2, Mail, User, MapPin, Loader2, AlertCircle, Phone, ExternalLink, X } from 'lucide-react';
+import { CheckCircle2, Send, Mail, MapPin, Loader2, AlertCircle, Phone, ExternalLink, X } from 'lucide-react';
 
-export default function ContactPage({ onBookDemo }) {
+export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

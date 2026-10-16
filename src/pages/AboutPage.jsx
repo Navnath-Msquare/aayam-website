@@ -6,8 +6,7 @@ import {
   Users, 
   GitFork, 
   ShieldCheck, 
-  ExternalLink,
-  ArrowRight
+  ExternalLink
 } from 'lucide-react';
 
 export default function AboutPage({ onBookDemo, onNavigateHome }) {

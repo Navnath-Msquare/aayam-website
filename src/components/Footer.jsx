@@ -1,6 +1,8 @@
 import React from 'react';
 import { Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
 
+const currentYear = new Date().getFullYear();
+
 export default function Footer({ onNavigateHome, onNavigateAbout, onOpenContact, onOpenPolicy }) {
   return (
     <footer className="bg-white border-t border-slate-200 pt-7 sm:pt-8 pb-5 reveal-on-scroll">
@@ -140,7 +142,7 @@ export default function Footer({ onNavigateHome, onNavigateAbout, onOpenContact,
 
         {/* Bottom Bar: Copyright */}
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-1.5 text-center sm:text-left">
-          <p>© {new Date().getFullYear()} MSquare Software Systems. All rights reserved.</p>
+          <p>© {currentYear} MSquare Software Systems. All rights reserved.</p>
           <p>Enterprise Real Estate & Construction Workflow Suite</p>
         </div>
 

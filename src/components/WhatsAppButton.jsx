@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function WhatsAppButton({ phoneNumber = '9876543210' }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   // International format for India: 91 + 10 digits
   const cleanNumber = phoneNumber.replace(/[^0-9]/g, '');
   const internationalNumber = cleanNumber.startsWith('91') ? cleanNumber : `91${cleanNumber}`;
@@ -16,8 +14,6 @@ export default function WhatsAppButton({ phoneNumber = '9876543210' }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp 9876543210"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
         className="flex items-center bg-[#25D366] hover:bg-[#20ba59] text-white p-3.5 sm:p-4 rounded-full shadow-[0_10px_25px_-4px_rgba(37,211,102,0.5),0_4px_10px_-2px_rgba(0,0,0,0.1)] hover:shadow-[0_16px_32px_-4px_rgba(37,211,102,0.6)] transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-emerald-400/50"
       >
         {/* Soft Animated Pulse Ring */}

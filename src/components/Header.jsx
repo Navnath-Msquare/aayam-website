@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
-export default function Header({ currentPage, setCurrentPage, onBookDemo, onSignIn }) {
+export default function Header({ currentPage, setCurrentPage, onBookDemo }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -18,7 +18,9 @@ export default function Header({ currentPage, setCurrentPage, onBookDemo, onSign
     try {
       const newPath = page === 'home' ? '/' : `/${page}`;
       window.history.pushState({}, '', newPath);
-    } catch (e) {}
+    } catch {
+      // Ignore pushState failure in environments with restricted history
+    }
     setMobileMenuOpen(false);
     window.scrollTo(0, 0);
 

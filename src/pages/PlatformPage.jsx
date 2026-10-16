@@ -8,16 +8,13 @@ import {
   HardHat, 
   Boxes, 
   Truck, 
-  Receipt, 
-  Wallet, 
   FileCheck2, 
   Building2, 
   FileText, 
   ClipboardCheck, 
   FileSpreadsheet, 
   Settings2, 
-  BarChart3,
-  Sparkles
+  BarChart3
 } from 'lucide-react';
 
 export default function PlatformPage({ onBookDemo }) {
