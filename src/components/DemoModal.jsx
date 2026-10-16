@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { X, CheckCircle2, Send, Building2, Phone, Mail, User } from 'lucide-react';
 
 export default function DemoModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +13,8 @@ export default function DemoModal({ isOpen, onClose }) {
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -86,7 +86,7 @@ export default function DemoModal({ isOpen, onClose }) {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Navnath Bandgar"
+                      placeholder="e.g. Ajay Kumar "
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full pl-9 pr-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#F15A24]"

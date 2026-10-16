@@ -44,13 +44,13 @@ export default function Header({ currentPage, setCurrentPage, onBookDemo, onSign
           {/* Logo (Balanced normal size) */}
           <button
             onClick={() => handleNavClick('home')}
-            className="flex items-center group text-left focus:outline-none py-0.5"
+            className="flex items-center group text-left focus:outline-none py-0.5 shrink-0"
             aria-label="AAYAM Home"
           >
             <img
               src="/AayamLogoV1.png"
               alt="AAYAM - Every Dimension. Connected."
-              className="h-9 sm:h-10 md:h-11 lg:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105 origin-left"
+              className="h-7 sm:h-9 md:h-11 lg:h-12 w-auto object-contain transition-transform duration-200 group-hover:scale-105 origin-left"
             />
           </button>
 
@@ -143,19 +143,19 @@ export default function Header({ currentPage, setCurrentPage, onBookDemo, onSign
           </div>
 
           {/* Mobile & Tablet Toggle Controls (Mobile, Tablet, iPad Pro Portrait) */}
-          <div className="flex lg:hidden items-center space-x-2 sm:space-x-3">
+          <div className="flex lg:hidden items-center space-x-1.5 sm:space-x-3 shrink-0">
             <button
               onClick={onBookDemo}
-              className="px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#F15A24] hover:bg-[#d94916] text-white text-xs sm:text-sm font-semibold transition-colors shadow-sm"
+              className="px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#F15A24] hover:bg-[#d94916] text-white text-xs sm:text-sm font-semibold transition-colors shadow-sm whitespace-nowrap"
             >
               Book Demo
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#F15A24]"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#F15A24]"
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
         </div>

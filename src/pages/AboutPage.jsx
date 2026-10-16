@@ -114,6 +114,8 @@ export default function AboutPage({ onBookDemo, onNavigateHome }) {
                 <img
                   src="/images/why-aayam-exists.jpg"
                   alt="Engineers reviewing blueprints on site - Why AAYAM exists"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover aspect-[4/3]"
                 />
               </div>
@@ -198,6 +200,8 @@ export default function AboutPage({ onBookDemo, onNavigateHome }) {
         <img
           src="/images/msquare-software-banner.jpg"
           alt="MSquare Software Real Estate Solutions"
+          loading="lazy"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
 

@@ -121,7 +121,7 @@ export default function PlatformPage({ onBookDemo }) {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white w-full max-w-full overflow-x-hidden">
       {/* 1. Hero Section */}
       <section className="relative w-full min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] overflow-hidden bg-slate-950 pt-28 sm:pt-36 pb-16 flex items-center">
         <img
@@ -176,9 +176,9 @@ export default function PlatformPage({ onBookDemo }) {
       </section>
 
       {/* 2. Sub-Navigation / Category Bar (Directly below hero) */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 -mt-8 sm:-mt-10 reveal-zoom-in">
-        <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/90 py-2.5 px-3 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
+      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 -mt-8 sm:-mt-10 overflow-hidden">
+        <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/90 py-2.5 px-3 sm:px-6 overflow-hidden">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 w-full">
             {navCategories.map((cat) => {
               const Icon = cat.icon;
               const isActive = activeTab === cat.id;
@@ -186,14 +186,14 @@ export default function PlatformPage({ onBookDemo }) {
                 <button
                   key={cat.id}
                   onClick={() => scrollToSection(cat.id)}
-                  className={`flex items-center justify-center space-x-2 sm:space-x-3 py-2.5 px-3 rounded-xl transition-all text-xs sm:text-sm font-semibold ${
+                  className={`flex items-center justify-center space-x-1.5 sm:space-x-3 py-2 sm:py-2.5 px-2 sm:px-3 rounded-xl transition-all text-xs sm:text-sm font-semibold min-w-0 truncate ${
                     isActive
                       ? 'text-[#F15A24] bg-orange-50 border border-orange-200/70 shadow-sm'
                       : 'text-slate-700 hover:text-[#F15A24] hover:bg-orange-50/40 border border-transparent'
                   }`}
                 >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#F15A24]" />
-                  <span>{cat.name}</span>
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#F15A24] flex-shrink-0" />
+                  <span className="truncate">{cat.name}</span>
                 </button>
               );
             })}
@@ -202,7 +202,7 @@ export default function PlatformPage({ onBookDemo }) {
       </div>
 
       {/* 3. Section: "Plan, Track and Understand Project Delivery." */}
-      <section id="delivery" className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section id="delivery" className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
@@ -221,7 +221,7 @@ export default function PlatformPage({ onBookDemo }) {
               <div
                 key={idx}
                 className={`group bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-sm hover:border-[#F15A24] hover:bg-gradient-to-b hover:from-white hover:via-white hover:to-[#FFF5F0] hover:shadow-[0_20px_40px_-10px_rgba(241,90,36,0.22)] hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between cursor-pointer reveal-on-scroll ${delays[idx % 3]} ${
-                  idx === 2 ? 'sm:col-span-2 lg:col-span-1 max-w-md sm:max-w-none mx-auto sm:mx-0 w-full' : ''
+                  idx === 2 ? 'sm:col-span-2 lg:col-span-1 w-full' : ''
                 }`}
               >
                 <div>
@@ -229,6 +229,8 @@ export default function PlatformPage({ onBookDemo }) {
                     <img
                       src={card.image}
                       alt={card.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -256,7 +258,7 @@ export default function PlatformPage({ onBookDemo }) {
       </section>
 
       {/* 4. Section: "Keep People and Materials Moving." */}
-      <section id="resources" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-t border-slate-100">
+      <section id="resources" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-t border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
@@ -276,7 +278,7 @@ export default function PlatformPage({ onBookDemo }) {
                 <div
                   key={idx}
                   className={`bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/80 hover:border-[#F15A24] hover:bg-gradient-to-br hover:from-white hover:via-orange-50/20 hover:to-orange-50/40 hover:shadow-[0_16px_36px_-8px_rgba(241,90,36,0.18)] hover:-translate-y-1.5 transition-all duration-300 flex items-start space-x-4 sm:space-x-5 group cursor-pointer reveal-on-scroll ${delays[idx % 3]} ${
-                    idx === 2 ? 'sm:col-span-2 lg:col-span-1 max-w-md sm:max-w-none mx-auto sm:mx-0 w-full' : ''
+                    idx === 2 ? 'sm:col-span-2 lg:col-span-1 w-full' : ''
                   }`}
                 >
                   <div className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-orange-50 border border-orange-100/70 flex items-center justify-center text-[#F15A24] group-hover:scale-110 group-hover:bg-[#F15A24] group-hover:text-white group-hover:shadow-md group-hover:shadow-orange-500/30 transition-all duration-300">
@@ -299,12 +301,12 @@ export default function PlatformPage({ onBookDemo }) {
       </section>
 
       {/* 5. Section: "Control Costs with Clear Records." */}
-      <section id="finance" className="py-16 sm:py-20 lg:py-24 bg-white border-t border-slate-100">
+      <section id="finance" className="py-16 sm:py-20 lg:py-24 bg-white border-t border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Left Column: Heading */}
-            <div className="md:col-span-2 lg:col-span-4 space-y-3 sm:space-y-4 reveal-from-left">
+            <div className="md:col-span-2 lg:col-span-4 space-y-3 sm:space-y-4 reveal-on-scroll">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 font-heading tracking-tight leading-tight">
                 Control Costs with<br className="hidden sm:inline" /> Clear Records.
               </h2>
@@ -319,13 +321,15 @@ export default function PlatformPage({ onBookDemo }) {
                 <img
                   src="/images/cost-control-engineer.jpg"
                   alt="Site engineer inspecting project plans and budgets"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
             </div>
 
             {/* Right Column: 2 Stacked Feature Cards */}
-            <div className="md:col-span-1 lg:col-span-4 space-y-4 sm:space-y-5 reveal-from-right">
+            <div className="md:col-span-1 lg:col-span-4 space-y-4 sm:space-y-5 reveal-on-scroll">
               <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 hover:border-[#F15A24] hover:bg-gradient-to-br hover:from-white hover:to-orange-50/40 hover:shadow-[0_14px_30px_-6px_rgba(241,90,36,0.16)] hover:-translate-y-1 transition-all duration-300 flex items-start space-x-4 group cursor-pointer">
                 <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-orange-50 border border-orange-100/70 flex items-center justify-center text-[#F15A24] group-hover:scale-110 group-hover:bg-[#F15A24] group-hover:text-white transition-all duration-300">
                   <FileText className="w-5 h-5" />
@@ -360,7 +364,7 @@ export default function PlatformPage({ onBookDemo }) {
       </section>
 
       {/* 6. Section: "Connect Every Stakeholder and Decision." */}
-      <section id="coordination" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-t border-slate-100">
+      <section id="coordination" className="py-16 sm:py-20 lg:py-24 bg-slate-50 border-t border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
@@ -416,10 +420,12 @@ export default function PlatformPage({ onBookDemo }) {
           </div>
 
           {/* Right Image Column */}
-          <div className="lg:col-span-5 relative min-h-[220px] lg:min-h-full">
+          <div className="lg:col-span-5 relative min-h-[220px] lg:min-h-full w-full overflow-hidden">
             <img
               src="/images/planning-handover.jpg"
               alt="Engineers reviewing blueprints on site with AI assistance"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
           </div>
@@ -428,7 +434,7 @@ export default function PlatformPage({ onBookDemo }) {
       </section>
 
       {/* 8. Section: "One Connected Project Journey." */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16 sm:py-20 lg:py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal-on-scroll">
@@ -447,7 +453,7 @@ export default function PlatformPage({ onBookDemo }) {
               return (
                 <div
                   key={idx}
-                  className={`bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-[#F15A24] hover:bg-gradient-to-b hover:from-white hover:via-white hover:to-[#FFF5F0] hover:shadow-[0_16px_36px_-8px_rgba(241,90,36,0.18)] hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer relative flex flex-col items-start reveal-on-scroll ${delays[idx % 4]}`}
+                  className={`bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-[#F15A24] hover:bg-gradient-to-b hover:from-white hover:via-white hover:to-[#FFF5F0] hover:shadow-[0_16px_36px_-8px_rgba(241,90,36,0.18)] hover:-translate-y-1.5 transition-all duration-300 group cursor-pointer relative flex flex-col items-start overflow-hidden lg:overflow-visible reveal-on-scroll ${delays[idx % 4]}`}
                 >
                   <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100/70 flex items-center justify-center text-[#F15A24] mb-4 group-hover:scale-110 group-hover:bg-[#F15A24] group-hover:text-white group-hover:shadow-md group-hover:shadow-orange-500/30 transition-all duration-300">
                     <Icon className="w-6 h-6 stroke-[1.8]" />
@@ -461,7 +467,7 @@ export default function PlatformPage({ onBookDemo }) {
 
                   {/* Arrow for desktop */}
                   {idx < journeySteps.length - 1 && (
-                    <div className="hidden lg:block absolute -right-3 top-9 text-slate-300 z-10">
+                    <div className="hidden lg:block absolute right-2 top-9 text-slate-300 z-10">
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   )}

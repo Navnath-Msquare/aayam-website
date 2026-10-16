@@ -8,6 +8,8 @@ export default function HandoverBanner({ onBookDemo }) {
       <img
         src="/images/planning-handover.jpg"
         alt="Engineers planning construction from planning to handover"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover object-[center_12%] sm:object-[center_8%] md:object-top filter contrast-[1.08] saturate-[1.12] brightness-[0.96]"
       />
 

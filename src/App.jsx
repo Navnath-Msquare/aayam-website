@@ -19,7 +19,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [signInModalOpen, setSignInModalOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function App() {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -54,7 +54,7 @@ export default function App() {
     };
   }, []);
 
-  // Scroll Reveal Observer: Triggers silky-smooth animations as user scrolls
+  // Optimized Scroll Reveal Observer: Silky-smooth 60fps on mobile without body-wide MutationObserver overhead
   useEffect(() => {
     const observerCallback = (entries, observer) => {
       entries.forEach((entry) => {
@@ -67,8 +67,8 @@ export default function App() {
 
     const observer = new IntersectionObserver(observerCallback, {
       root: null,
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.08
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.05
     });
 
     const scanAndObserve = () => {
@@ -78,18 +78,15 @@ export default function App() {
       elements.forEach((el) => observer.observe(el));
     };
 
-    // Initial scan and staggered check
+    // Staggered lightweight scans for newly mounted page content
     scanAndObserve();
-    const timer = setTimeout(scanAndObserve, 150);
-
-    // Watch for DOM changes when pages switch
-    const mutationObserver = new MutationObserver(scanAndObserve);
-    mutationObserver.observe(document.body, { childList: true, subtree: true });
+    const t1 = setTimeout(scanAndObserve, 80);
+    const t2 = setTimeout(scanAndObserve, 350);
 
     return () => {
-      clearTimeout(timer);
+      clearTimeout(t1);
+      clearTimeout(t2);
       observer.disconnect();
-      mutationObserver.disconnect();
     };
   }, [currentPage]);
 
@@ -98,7 +95,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#F15A24] selection:text-white">
+    <div className="min-h-screen bg-white text-slate-800 flex flex-col font-sans selection:bg-[#F15A24] selection:text-white w-full max-w-full overflow-x-hidden">
       {/* Animated Logo Splash Screen on Initial Load */}
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
 
@@ -111,7 +108,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full max-w-full overflow-x-hidden">
         {currentPage === 'contact' && (
           <ContactPage onBookDemo={() => setDemoModalOpen(true)} />
         )}

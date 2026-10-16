@@ -68,6 +68,9 @@ export default function HeroSlider({ onBookDemo }) {
             <img
               src={slide.image}
               alt={slide.title}
+              loading={index === 0 ? "eager" : "lazy"}
+              fetchPriority={index === 0 ? "high" : "low"}
+              decoding="async"
               className="w-full h-full object-cover object-center filter contrast-[1.08] saturate-[1.12] brightness-[0.98]"
             />
 
@@ -90,7 +93,7 @@ export default function HeroSlider({ onBookDemo }) {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-md">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.14] drop-shadow-md break-words">
             Bring Every<br />
             Project Dimension<br />
             Together.

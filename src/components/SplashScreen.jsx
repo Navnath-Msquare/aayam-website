@@ -24,29 +24,29 @@ export default function SplashScreen({ onFinish }) {
     // Stage 1: Active animation start
     const timer1 = setTimeout(() => {
       setStage('active');
-    }, 60);
+    }, 40);
 
-    // Smooth progress bar fill
+    // Smooth snappy progress bar fill
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + 5;
+        return prev + 8;
       });
-    }, 55);
+    }, 45);
 
-    // Stage 2: Begin exit transition at ~1.7s
+    // Stage 2: Begin exit transition at ~1.05s
     const exitTimer = setTimeout(() => {
       setStage('exiting');
-    }, 1750);
+    }, 1050);
 
     // Stage 3: Complete & unmount
     const finishTimer = setTimeout(() => {
       setStage('finished');
       if (onFinish) onFinish();
-    }, 2250);
+    }, 1380);
 
     return () => {
       clearTimeout(timer1);
@@ -65,9 +65,9 @@ export default function SplashScreen({ onFinish }) {
         setTimeout(() => {
           setStage('finished');
           if (onFinish) onFinish();
-        }, 350);
+        }, 250);
       }}
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gradient-to-b from-[#050C18] via-[#091527] to-[#030710] select-none transition-all duration-500 ease-out cursor-pointer overflow-hidden ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gradient-to-b from-[#050C18] via-[#091527] to-[#030710] select-none transition-all duration-400 ease-out cursor-pointer overflow-hidden ${
         stage === 'exiting'
           ? 'opacity-0 scale-105 pointer-events-none'
           : 'opacity-100 scale-100'
@@ -93,16 +93,16 @@ export default function SplashScreen({ onFinish }) {
         ))}
       </div>
 
-      {/* 2. Soft Ambient Radial Light Aura Behind Logo */}
+      {/* 2. Soft Ambient Radial Light Aura Behind Logo (Mobile GPU optimized) */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center">
         {/* Core Orange Radiance */}
         <div
-          className={`w-[400px] sm:w-[580px] h-[400px] sm:h-[580px] rounded-full bg-[#F15A24]/18 blur-[100px] transition-all duration-1000 transform ${
-            stage === 'active' ? 'scale-115 opacity-100' : 'scale-90 opacity-40'
+          className={`w-[320px] sm:w-[480px] h-[320px] sm:h-[480px] rounded-full bg-[#F15A24]/18 blur-2xl transition-all duration-700 transform ${
+            stage === 'active' ? 'scale-110 opacity-100' : 'scale-90 opacity-40'
           }`}
         />
         {/* Subtle Cyan Edge Accent */}
-        <div className="absolute w-[320px] sm:w-[460px] h-[320px] sm:h-[460px] rounded-full bg-cyan-500/10 blur-[120px] -translate-y-8" />
+        <div className="absolute w-[240px] sm:w-[380px] h-[240px] sm:h-[380px] rounded-full bg-cyan-500/10 blur-xl -translate-y-6" />
         
         {/* Architectural Horizontal Floor Marker Lines */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(255,255,255,0.02)_50%,transparent_100%)] bg-[size:100%_4rem] pointer-events-none" />

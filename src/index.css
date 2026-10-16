@@ -5,14 +5,36 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   html {
     scroll-behavior: smooth;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     @apply bg-slate-50 text-slate-800 antialiased selection:bg-orange-500 selection:text-white;
+    overflow-x: clip;
     overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #root {
+    overflow-x: clip;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
   }
 }
 
@@ -128,6 +150,18 @@
 .reveal-zoom-in.is-visible {
   opacity: 1;
   transform: scale(1) translateY(0);
+}
+
+/* Mobile-safe Animations: Restrict transforms to Y-axis on mobile devices to prevent side-scrolling/wobbling */
+@media (max-width: 768px) {
+  .reveal-from-left,
+  .reveal-from-right {
+    transform: translateY(24px) !important;
+  }
+  .reveal-from-left.is-visible,
+  .reveal-from-right.is-visible {
+    transform: translateY(0) !important;
+  }
 }
 
 /* Stagger animation delays */
