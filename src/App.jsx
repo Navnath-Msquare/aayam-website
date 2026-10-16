@@ -19,7 +19,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const [currentPage, setCurrentPage] = useState('home');
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [signInModalOpen, setSignInModalOpen] = useState(false);
